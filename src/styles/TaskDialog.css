@@ -1,0 +1,6 @@
+/*all devices by default, including phones and tablets.*/
+.dialog-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
