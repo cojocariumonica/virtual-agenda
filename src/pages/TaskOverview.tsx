@@ -5,6 +5,7 @@ import TaskFilterActionsBar from '../components/TaskFilterActionsBar';
 import {Box, Card, CardContent, Typography} from "@mui/material";
 import { Task } from '../types/Task';
 import '../styles/TaskOverview.css';
+import InformationCard from "../components/generic/InformationCard";
 
 const TaskOverview = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
@@ -79,18 +80,7 @@ const TaskOverview = () => {
                     <TaskList tasks={filteredTasks} onDelete={handleDeleteTask} onEdit={(task) => { setTaskToEdit(task); setDialogOpen(true); }} />
                 </Box>
             ) : (
-                <Box className="centered-box">
-                    <Card className="centered-card">
-                        <CardContent>
-                            <Typography variant="h5" component="div" gutterBottom>
-                                You have no tasks yet...
-                            </Typography>
-                            <Typography variant="h6" color="textSecondary">
-                                Start adding some tasks to get organized!
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Box>
+                <InformationCard primaryInfo="You have no tasks yet..." secondaryInfo="Start adding some tasks to get organized!"/>
             )}
 
             <TaskDialog open={dialogOpen} task={taskToEdit} onClose={() => setDialogOpen(false)} onSave={handleSaveTask} />
