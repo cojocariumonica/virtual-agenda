@@ -1,0 +1,28 @@
+.task-list-container {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .task-list-container {
+        height: auto;
+        overflow-y: visible;
+    }
+}
+
+.centered-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.centered-card {
+    width: 90%;
+    padding: 16px; /* Equivalent to padding 2 in MUI */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Equivalent to boxShadow 3 in MUI */
+    border-radius: 8px; /* Equivalent to borderRadius 2 in MUI */
+    text-align: center;
+}

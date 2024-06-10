@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TaskList from '../components/TaskList';
 import TaskDialog from '../components/TaskDialog';
 import TaskFilterActionsBar from '../components/TaskFilterActionsBar';
-import {Box} from "@mui/material";
+import {Box, Card, CardContent, Typography} from "@mui/material";
 import { Task } from '../types/Task';
 import '../styles/TaskOverview.css';
 
@@ -74,19 +74,24 @@ const TaskOverview = () => {
                 onAddTask={() => { setTaskToEdit(null); setDialogOpen(true); }}
             />
 
-            <Box
-                sx={{
-                    height: 'calc(100vh - 200px)',
-                    overflowY: 'auto',
-                    width: '100%',
-                    '@media (min-width: 600px)': {
-                        height: 'auto',
-                        overflowY: 'visible',
-                    },
-                }}
-            >
-                <TaskList tasks={filteredTasks} onDelete={handleDeleteTask} onEdit={(task) => { setTaskToEdit(task); setDialogOpen(true); }} />
-            </Box>
+            {filteredTasks.length > 0 ? (
+                <Box className="task-list-container">
+                    <TaskList tasks={filteredTasks} onDelete={handleDeleteTask} onEdit={(task) => { setTaskToEdit(task); setDialogOpen(true); }} />
+                </Box>
+            ) : (
+                <Box className="centered-box">
+                    <Card className="centered-card">
+                        <CardContent>
+                            <Typography variant="h5" component="div" gutterBottom>
+                                You have no tasks yet...
+                            </Typography>
+                            <Typography variant="h6" color="textSecondary">
+                                Start adding some tasks to get organized!
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Box>
+            )}
 
             <TaskDialog open={dialogOpen} task={taskToEdit} onClose={() => setDialogOpen(false)} onSave={handleSaveTask} />
         </div>
