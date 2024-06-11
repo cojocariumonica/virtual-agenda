@@ -11,6 +11,18 @@ interface TaskItemProps {
 }
 
 const TaskItem = (props: TaskItemProps) => {
+    let getItemStatus = (status: any) => {
+        if (status === 'created') {
+            return 'Created';
+        }
+        else if (status === 'in-progress') {
+            return 'In Progress';
+        }
+        else if (status === 'completed') {
+            return 'Completed';
+        }
+    }
+
     return (
         <Card className="task-card">
             <CardContent sx={{ flex: '1 0 auto' }}>
@@ -27,7 +39,7 @@ const TaskItem = (props: TaskItemProps) => {
 
                 <Box display="flex" alignItems="center" mb={1}>
                     <InfoIcon sx={{ mr: 1 }} />
-                    <Typography variant="body2" color="textSecondary">Status: {props.task.status}</Typography>
+                    <Typography variant="body2" color="textSecondary">Status: {getItemStatus(props.task.status)}</Typography>
                 </Box>
 
                 <Box display="flex" alignItems="center" mb={1}>
