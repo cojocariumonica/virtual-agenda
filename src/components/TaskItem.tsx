@@ -27,7 +27,7 @@ const TaskItem = (props: TaskItemProps) => {
         <Card className="task-card">
             <CardContent sx={{ flex: '1 0 auto' }}>
                 <Box display="flex" justifyContent="center" mb={2}>
-                    <Typography variant="h5" color="textPrimary" gutterBottom textAlign="center">
+                    <Typography variant="h5" color="textPrimary" gutterBottom textAlign="center" sx={{textTransform: 'capitalize'}}>
                         {props.task.title}
                     </Typography>
                 </Box>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TaskList from '../components/TaskList';
 import TaskDialog from '../components/TaskDialog';
 import TaskFilterActionsBar from '../components/TaskFilterActionsBar';
-import {Box, Card, CardContent, Typography} from "@mui/material";
+import {Box} from "@mui/material";
 import { Task } from '../types/Task';
 import '../styles/TaskOverview.css';
 import InformationCard from "../components/generic/InformationCard";
@@ -23,7 +23,7 @@ const TaskOverview = () => {
 
     useEffect(() => {
         filterTasks();
-    }, [tasks, selectedDate, filterTitle, filterStatus]);
+    }, [tasks, selectedDate, filterTitle, filterStatus, filteredTasks]);
 
     const sortTasksByDate = (tasks: Task[]) => {
         return tasks.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
